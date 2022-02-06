@@ -1,0 +1,16 @@
+{
+  "name": "contacts_list_st2",
+  "version": "1.0.0",
+  "description": "Basic Contacts List",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhuvan",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}

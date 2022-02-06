@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="home.css">
+
+
+</head>
+<body>
+        <div class="container">
+
+        <div class="header">
+            <h1>Contacts List</h1>
+        </div>
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <!-- Add button -->
+            <div class="addBtn">
+                <a href="/addContactPage">
+                    <button class="add">
+                        <i class="fas fa-plus"></i>
+                        Add New Contact
+
+                    </button>
+                </a>
+            </div>
+
+            <!-- Delete All button -->
+            <div class="clearListBtn">
+                <a href="/clearList">
+                    <button>
+                        <i class="fas fa-trash-alt"></i>
+                        Empty List
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contacts List -->
+        <div class="list">
+            <% for(let i of contacts) { %>
+            <div class="contact">
+                <!-- Name -->
+                <div class="name">
+                    <i class="fas fa-id-card ic"></i>
+                    <%= i.name %>
+                    
+                </div>
+                    <!-- Email -->
+                <div class="email">
+
+                    <i class="far fa-envelope ic"></i>
+                    <%= i.email %>
+
+                </div>
+                <!-- Phone number -->
+                <div class="phone">
+
+                    <i class="fas fa-phone ic"></i>
+                       <p><%= i.phone %></p> 
+
+                    <div class="icons">
+                        <!-- Delete Icon -->
+                        <div class="delete">
+                            <a href="/delete_contact/?phone=<%= i.phone%>">
+                                <i class="fas fa-trash-alt del"></i>
+                            </a>
+                        </div>
+                        <!-- Edit icon -->
+                        <div class="edit">
+                            <a href="">
+                                <i class="fas fa-edit ed"></i>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+
+            
+
+
+        </div>
+
+        </div>
+    
+</body>
+</html>

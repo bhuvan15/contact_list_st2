@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+    <link rel="stylesheet" href="addContact.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Add Contact Info</h1> 
+        </div>
+
+        <form action="/add_new_contact" method="POST" id="contact_form">
+
+            <div class="input">
+                <label for="name">Name : </label>
+                <input type="text" name="name" id="name" class="inputBox" placeholder="Enter Name" required />
+            </div>
+
+            <div class="input">
+                <label for="name">Email : </label>
+                <input type="text" name="email" id="name" class="inputBox" placeholder="Enter email id" required />
+            </div>
+
+            <div class="input">
+                <label for="name">Phone : </label>
+                <input type="text" name="phone" id="name" class="inputBox" placeholder="Enter phone number" required />
+            </div>
+            
+            <div class="input" id="submit-btn">
+                <input type="submit" value="Submit">
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

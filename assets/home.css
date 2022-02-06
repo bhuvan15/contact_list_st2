@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+   /*  background: rgb(214,213,228);
+    background: linear-gradient(90deg, rgba(214,213,228,1) 0%, rgba(145,183,215,0.7819502801120448) 75%);
+     */
+     background-color: #1f2833;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    padding: 20px;
+    font-size: 26px;
+    /* color: rgb(8, 8, 122); */
+    color: #66fcf1;
+    font-family: "PT Sans", sans-serif;
+}
+
+
+/* Buttons */
+.buttons {
+    height: 100px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+.buttons button{
+    color: #fff;
+    background: transparent;
+    border: none;
+    height: 60px;
+    padding: 5px 10px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+
+}
+.buttons .add{
+    background-color: rgb(35, 168, 35);
+    color: #fff;
+}
+
+.clearListBtn {
+    background-color: rgb(197, 28, 28);
+    border-radius: 10px;
+
+}
+
+/* List box */
+
+.contact {
+    min-height: 80px;
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dadada;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+
+}
+.phone {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: space-between;
+}
+.icons {
+    display: flex;
+    padding: 5px;
+}
+.icons i {
+    margin-left: 10px;
+    font-size: 24px;
+    margin-right: 5px;
+}
+.del {
+    color: rgb(195, 56, 21);
+}
+.ed {
+    color: rgb(168, 168, 9);
+}
+
+.ic {
+    opacity: 0.8;
+    color: #3b8b87;
+    margin-right: 5px;
+    font-size: 16px;
+}
