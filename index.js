@@ -83,9 +83,27 @@ app.post('/add_new_contact', function(req, res) {
 
 /* Clear list */
 app.get('/clearList', function(req, res) {
+    Contact.deleteMany({});
     return res.redirect('/');
 })
 
+
+/* Search contact */
+app.post('/search', function(req, res) {
+    let name = req.body.search;
+    if(name == '') {
+        return res.redirect('/');
+    } 
+    Contact.find({name}, function(err, contacts) {
+        if(err) {
+            console.log(err);
+            return res.redirect('/');
+        }
+        return res.render('home', {
+            contacts : contacts,
+        })
+    })
+})  
 
 
 /* Delete Contact */

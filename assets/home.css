@@ -52,7 +52,7 @@ body {
     padding: 5px 10px;
     width: 150px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 10px;
     font-weight: 700;
 
@@ -111,4 +111,24 @@ body {
     color: #3b8b87;
     margin-right: 5px;
     font-size: 16px;
+}
+
+/* Search */
+#search {
+    font-size: 22px;
+    padding: 10px 20px;
+    border-radius: 7px;
+
+}
+#search:focus {
+    outline: none;
+    
+}
+
+#searchBtn {
+    font-size: 22px;
+    padding: 10px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #66fcf1;
 }

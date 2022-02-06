@@ -33,14 +33,18 @@
             </div>
 
             <!-- Delete All button -->
-            <div class="clearListBtn">
+            <!-- <div class="clearListBtn">
                 <a href="/clearList">
                     <button>
                         <i class="fas fa-trash-alt"></i>
                         Empty List
                     </button>
                 </a>
-            </div>
+            </div> -->
+            <form action="/search" method="post">
+                <input type="search" name="search" id="search" placeholder = "Enter Name of contact" />
+                <input type="submit" value="Search" id="searchBtn"/>
+            </form>
         </div>
 
         <!-- Contacts List -->
