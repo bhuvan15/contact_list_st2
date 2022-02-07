@@ -99,6 +99,10 @@ app.post('/search', function(req, res) {
             console.log(err);
             return res.redirect('/');
         }
+        if(contacts.length == 0) {
+            alert("Contact Not Found");
+            return res.redirect('/');
+        }
         return res.render('home', {
             contacts : contacts,
         })
