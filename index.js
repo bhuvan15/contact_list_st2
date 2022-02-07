@@ -4,6 +4,8 @@ const path = require('path');
 const alert = require('alert');
 const db = require('./config/mongoose');
 const Contact = require('./models/contact');
+const { response } = require('express');
+const { isValidObjectId } = require('mongoose');
 
 //Port number
 const PORT = 8000;
@@ -48,7 +50,7 @@ app.post('/add_new_contact', function(req, res) {
         let phone = req.body.phone;
         let email = req.body.email;
 
-        /* Checking if same phone nymber exists or note*/
+        /* Checking if same phone number exists or note*/
         Contact.find({phone}, function(err, contact) {
 
            if(err) {
@@ -56,12 +58,13 @@ app.post('/add_new_contact', function(req, res) {
            }
            /* if phone number not found */
            if(contact.length == 0) {
+               /* Checking for if same exists or not */
                 Contact.find({email}, function(err, email) {
 
                     if(err) {
                         console.log("error in checking if email exists or not");
                     }
-
+                    /* if email not found we will create out new contact */
                     if(email.length == 0) {
                         /* Creating Contact */
                         Contact.create({
@@ -79,13 +82,13 @@ app.post('/add_new_contact', function(req, res) {
                     }
                     else {
                         alert("Email already exists");
-                        return;
+                        return res.redirect('back');
                     }
                 })
             }
             else {
                 alert("Phone Number already Exists");
-                return;
+                return res.redirect('back');
             }
 
         })
@@ -104,39 +107,6 @@ app.post('/add_new_contact', function(req, res) {
             console.log('***' + newContact);
             return res.redirect('/');
         }); */
-
-
-
-        /*  Checking if email exists or not 
-        let email = req.body.email;
-
-         Contact.find({email}, function(err, contact) {
-           if(err) {
-            console.log("Error in checking if Email exists or not");
-           }
-
-           if(contact.length != 0) {
-                alert("Email already exists");
-                return;
-            }
-
-            else {
-            Contact.create({
-            name : req.body.name,
-            email: req.body.email,
-            phone: req.body.phone,
-        }, function(err, newContact) {
-            if(err) {
-                console.log("error in creating a contact");
-                return;
-            }
-            console.log('***' + newContact);
-            return res.redirect('/');
-        });
-            }
-        })
-
-     */
                     
 })
 
@@ -189,6 +159,19 @@ app.get('/delete_contact', function(req, res) {
 
 })
 
+
+/* Updating Contact */
+app.get('/update_contact', function(req, res) {
+    let id = req.query.id;
+     Contact.find({"_id" : id}, function(err, contacts) {
+        return res.render('update',
+            {contact : contacts}
+        )
+    }) 
+    
+    
+    
+})
 
 
 

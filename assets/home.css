@@ -32,8 +32,13 @@ body {
     /* color: rgb(8, 8, 122); */
     color: #66fcf1;
     font-family: "PT Sans", sans-serif;
+    display: flex;
+    align-items: center;
 }
-
+.header i {
+    font-size: 34px;
+    margin: 6px;
+}
 
 /* Buttons */
 .buttons {
