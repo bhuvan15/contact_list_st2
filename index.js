@@ -175,24 +175,23 @@ app.get('/update_contact', function(req, res) {
 app.post('/updateContactForm', function(req, res) {
     let id = req.query.id;
     console.log("++++++" + id);
-    Contact.findByIdAndDelete(id, function(err) {
-        if(err) {
-            console.log("error in updating");
-        }
-    })
 
-    Contact.create({
+        /* Updating the user */
+        Contact.findByIdAndUpdate(id,  {
             name : req.body.name,
             email: req.body.email,
             phone: req.body.phone,
-        }, function(err, newContact) {
+        }, 
+        function(err, docs) {
             if(err) {
-                console.log("error in creating a contact");
+                console.log("Error in modifying document");
                 return;
             }
-            console.log('***' + newContact);
-            return res.redirect('/');
-        });
+            console.log("New User" + docs);
+            return  res.redirect('/');
+        })
+
+
 })
 
 
