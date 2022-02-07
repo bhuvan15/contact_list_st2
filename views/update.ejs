@@ -57,6 +57,7 @@ body {
 }
 
 .input {
+    margin: 30px;
     width: 30vw;
     display: flex;
     justify-content: space-between;
@@ -94,7 +95,7 @@ body {
     cursor: pointer;
 }
 #id {
-    cursor: disabled;
+    cursor: not-allowed;
     color: #fff;
     opacity: 0.6;
 }
@@ -109,9 +110,9 @@ body {
         <div class="header">
             <h1>Update Contact Info</h1>
         </div>
-
-        <form action="/add_new_contact" method="post" id="contact_form">
-            <%for(let i of contact) {%>
+<%for(let i of contact) {%>
+        <form action="/updateContactForm/?id=<%= i.id%>" method="post" id="update">
+         
             <div class="input">
                 <label for="id">Contact id : </label>
                 <input type="text" name="id" id="id" class="inputBox" value="<%= i.id %>" disabled required />

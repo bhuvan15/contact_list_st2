@@ -168,11 +168,32 @@ app.get('/update_contact', function(req, res) {
             {contact : contacts}
         )
     }) 
-    
-    
-    
 })
 
+
+/* Updating contact */
+app.post('/updateContactForm', function(req, res) {
+    let id = req.query.id;
+    console.log("++++++" + id);
+    Contact.findByIdAndDelete(id, function(err) {
+        if(err) {
+            console.log("error in updating");
+        }
+    })
+
+    Contact.create({
+            name : req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+        }, function(err, newContact) {
+            if(err) {
+                console.log("error in creating a contact");
+                return;
+            }
+            console.log('***' + newContact);
+            return res.redirect('/');
+        });
+})
 
 
 
