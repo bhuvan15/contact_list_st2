@@ -44,28 +44,84 @@ app.get('/addContactPage', function(req, res) {
 
 /* Add Contact */
 app.post('/add_new_contact', function(req, res) {
-    /* Checking if email or phone number already exists or not */
-/*     let emailIndex = Contacts.findIndex(contact => contact.email == req.body.email);
-    let phoneIndex = Contacts.findIndex(contact => contact.phone == req.body.phone);
-    let nameIndex = Contacts.findIndex(contact => contact.name == req.body.name);
-    if(phoneIndex != -1) {
-        console.log("Phone Already Exists");
-        alert("Phone Already Exists");
-        return res.redirect('/addContactPage');
-    }
-    else if(emailIndex != -1) {
-        console.log("Email Already Exists");
-        alert("Email Already Exists");
-        return res.redirect('/addContactPage');
-    }
-    else if(nameIndex != -1) {
-        console.log("Name Already Exists");
-        alert("Name Already Exists");
-        return res.redirect('/addContactPage');
-    } */
 
-   
-        Contact.create({
+        let phone = req.body.phone;
+        let email = req.body.email;
+
+        /* Checking if same phone nymber exists or note*/
+        Contact.find({phone}, function(err, contact) {
+
+           if(err) {
+            console.log("Error in checking if phone number exists or not");
+           }
+           /* if phone number not found */
+           if(contact.length == 0) {
+                Contact.find({email}, function(err, email) {
+
+                    if(err) {
+                        console.log("error in checking if email exists or not");
+                    }
+
+                    if(email.length == 0) {
+                        /* Creating Contact */
+                        Contact.create({
+                            name : req.body.name,
+                            email: req.body.email,
+                            phone: req.body.phone,
+                        }, function(err, newContact) {
+                            if(err) {
+                                console.log("error in creating a contact");
+                                return;
+                            }
+                            console.log('***' + newContact);
+                            return res.redirect('/');
+                        });
+                    }
+                    else {
+                        alert("Email already exists");
+                        return;
+                    }
+                })
+            }
+            else {
+                alert("Phone Number already Exists");
+                return;
+            }
+
+        })
+
+        
+        //Creating Contact
+            /* Contact.create({
+            name : req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+        }, function(err, newContact) {
+            if(err) {
+                console.log("error in creating a contact");
+                return;
+            }
+            console.log('***' + newContact);
+            return res.redirect('/');
+        }); */
+
+
+
+        /*  Checking if email exists or not 
+        let email = req.body.email;
+
+         Contact.find({email}, function(err, contact) {
+           if(err) {
+            console.log("Error in checking if Email exists or not");
+           }
+
+           if(contact.length != 0) {
+                alert("Email already exists");
+                return;
+            }
+
+            else {
+            Contact.create({
             name : req.body.name,
             email: req.body.email,
             phone: req.body.phone,
@@ -77,15 +133,20 @@ app.post('/add_new_contact', function(req, res) {
             console.log('***' + newContact);
             return res.redirect('/');
         });
+            }
+        })
+
+     */
+                    
 })
 
 
 
 /* Clear list */
-app.get('/clearList', function(req, res) {
+/* app.get('/clearList', function(req, res) {
     Contact.deleteMany({});
     return res.redirect('/');
-})
+}) */
 
 
 /* Search contact */
@@ -99,10 +160,12 @@ app.post('/search', function(req, res) {
             console.log(err);
             return res.redirect('/');
         }
+
         if(contacts.length == 0) {
             alert("Contact Not Found");
             return res.redirect('/');
         }
+
         return res.render('home', {
             contacts : contacts,
         })
@@ -117,7 +180,7 @@ app.get('/delete_contact', function(req, res) {
 
     Contact.findByIdAndDelete(id, function(err) {
         if(err) {
-            console.log("Error in deleteing");
+            console.log("Error in deleting");
             return;
         }
     })

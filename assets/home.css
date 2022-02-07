@@ -9,7 +9,7 @@ body {
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow-x: hidden;
    /*  background: rgb(214,213,228);
     background: linear-gradient(90deg, rgba(214,213,228,1) 0%, rgba(145,183,215,0.7819502801120448) 75%);
      */
