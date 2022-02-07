@@ -4,8 +4,7 @@ const path = require('path');
 const alert = require('alert');
 const db = require('./config/mongoose');
 const Contact = require('./models/contact');
-const { response } = require('express');
-const { isValidObjectId } = require('mongoose');
+
 
 //Port number
 const PORT = 8000;
@@ -35,8 +34,6 @@ app.get('/', function(req, res) {
         contacts : contacts,
     });
     })
-
-    
 })
 
 /* Input Page */
@@ -44,7 +41,7 @@ app.get('/addContactPage', function(req, res) {
     return res.render('inputPage');
 })
 
-/* Add Contact */
+/* Add Contact Form*/
 app.post('/add_new_contact', function(req, res) {
 
         let phone = req.body.phone;
@@ -92,31 +89,9 @@ app.post('/add_new_contact', function(req, res) {
             }
 
         })
-
-        
-        //Creating Contact
-            /* Contact.create({
-            name : req.body.name,
-            email: req.body.email,
-            phone: req.body.phone,
-        }, function(err, newContact) {
-            if(err) {
-                console.log("error in creating a contact");
-                return;
-            }
-            console.log('***' + newContact);
-            return res.redirect('/');
-        }); */
                     
 })
 
-
-
-/* Clear list */
-/* app.get('/clearList', function(req, res) {
-    Contact.deleteMany({});
-    return res.redirect('/');
-}) */
 
 
 /* Search contact */
@@ -196,7 +171,7 @@ app.post('/updateContactForm', function(req, res) {
 
 
 
-
+/* Firing our server at port 8000 */
 app.listen(PORT, function(err) {
     if(err) {
         console.log(`${err} on port ${PORT}`);

@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Contact</title>
-    <link rel="stylesheet" href="addContact.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 * {
     margin: 0;
@@ -106,11 +105,14 @@ body {
 
 <body>
     <div class="container">
-
+        <!-- Header File -->
         <div class="header">
             <h1>Update Contact Info</h1>
         </div>
-<%for(let i of contact) {%>
+
+        <!-- Update contact form -->
+
+        <%for(let i of contact) {%>
         <form action="/updateContactForm/?id=<%= i.id%>" method="post" id="update">
          
             <div class="input">
@@ -133,7 +135,8 @@ body {
                     value="<%= i.phone%>" required />
             </div>
             <% } %>
-
+            
+            <!-- update Button -->
             <div class="input" id="submit-btn">
                 <input type="submit" value="Update">
             </div>

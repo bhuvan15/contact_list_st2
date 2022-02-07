@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts List</title>
+    <!-- FontAwesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- CSS file -->
     <link rel="stylesheet" href="home.css">
 
 
@@ -15,10 +18,12 @@
 <body>
         <div class="container">
 
+        <!-- Header -->
         <div class="header">
             <i class="far fa-address-book"></i>
             <h1>Contacts List</h1>
         </div>
+
         <!-- Buttons -->
         <div class="buttons">
 
@@ -32,16 +37,8 @@
                     </button>
                 </a>
             </div>
-
-            <!-- Delete All button -->
-            <!-- <div class="clearListBtn">
-                <a href="/clearList">
-                    <button>
-                        <i class="fas fa-trash-alt"></i>
-                        Empty List
-                    </button>
-                </a>
-            </div> -->
+            
+            <!-- Search Option -->
             <form action="/search" method="post">
                 <input type="search" name="search" id="search" placeholder = "Enter Name of contact" />
                 <input type="submit" value="Search" id="searchBtn"/>
@@ -72,6 +69,7 @@
                        <p><%= i.phone %></p> 
 
                     <div class="icons">
+
                         <!-- Delete Icon -->
                         <div class="delete">
                             <a href="/delete_contact/?id=<%= i.id%>">
@@ -91,13 +89,8 @@
             </div>
             <% } %>
 
-
-            
-
-
         </div>
-
-        </div>
+    </div>
     
 </body>
 </html>
